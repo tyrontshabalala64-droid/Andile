@@ -1,0 +1,300 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair by Andz | Design Your Wig</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Animation for the Title --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .page-header h1 {
+            animation: fadeInUp 1.2s ease-out forwards;
+            font-size: 3.5rem; /* Make it larger */
+            color: #111;
+            text-transform: capitalize; /* Capitalizes the first letter */
+            margin-bottom: 20px;
+        }
+        
+        /* Optional: animate the subtitle too with a slight delay */
+        .page-header p {
+            animation: fadeInUp 1.2s ease-out 0.3s forwards;
+            opacity: 0; /* Starts invisible until animation kicks in */
+        }
+
+        /* --- Rest of the Design Page Layout --- */
+        .design-page-wrapper {
+            max-width: 1200px;
+            margin: 20px auto 100px;
+            padding: 0 20px;
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+        .design-form-container {
+            flex: 1.5;
+            background: #fff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        .design-form-container h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #111;
+            border-bottom: 2px solid #d18f93;
+            padding-bottom: 15px;
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+        }
+        .design-form { display: flex; flex-direction: column; gap: 20px; }
+        .form-row { display: flex; gap: 20px; }
+        .form-group { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 15px; border: 1px solid #e0e0e0;
+            border-radius: 8px; font-family: 'Montserrat', sans-serif;
+            font-size: 14px; background: #fafafa; transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #d18f93; outline: none;
+        }
+        .design-submit-btn {
+            background: #111; color: white; padding: 18px;
+            border: none; border-radius: 8px; font-size: 14px;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+            cursor: pointer; transition: background 0.3s; margin-top: 10px;
+        }
+        .design-submit-btn:hover { background: #d18f93; }
+        .design-contact-info {
+            flex: 1;
+            background: #111;
+            color: white;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 100px;
+        }
+        .design-contact-info h3 { font-size: 2rem; margin-bottom: 15px; font-family: 'Playfair Display', serif; }
+        .design-contact-info p { color: #ccc; font-size: 1rem; line-height: 1.6; margin-bottom: 30px; }
+        .contact-method {
+            display: flex; align-items: center; gap: 15px;
+            background: rgba(255,255,255,0.05); padding: 20px;
+            border-radius: 8px; margin-bottom: 15px;
+            text-decoration: none; color: white; transition: background 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .contact-method:hover { background: rgba(255,255,255,0.1); }
+        .contact-method i { font-size: 24px; color: #d18f93; }
+        .contact-method div span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #aaa; margin-bottom: 3px; }
+        .contact-method div strong { font-size: 1.1rem; font-weight: 500; }
+        
+        @media (max-width: 900px) {
+            .design-page-wrapper { flex-direction: column; }
+            .form-row { flex-direction: column; gap: 20px; }
+            .design-contact-info { position: static; }
+            .page-header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="https://www.tiktok.com/@hairby_andz?_r=1&_t=ZS-9AzT24f9npl" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <a href="index.html" class="logo-text">Hair by Andz</a>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Find a product..." onkeypress="handleSearch(event)">
+            <button onclick="executeSearch()"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-icons">
+            <a href="#"><i class="far fa-user"></i></a>
+            <button onclick="toggleCart()">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-bar">
+        <a href="index.html">Home</a> 
+        <a href="index.html#shop-section">Shop Wigs</a>
+        
+        <div class="dropdown">
+            <a>By Style</a> <!-- ARROW REMOVED -->
+            <div class="dropdown-content">
+                <a href="index.html#shop-section">Curly</a>
+                <a href="index.html#shop-section">Straight</a>
+            </div>
+        </div>
+
+        <!-- Highlighted active page -->
+        <a href="design.html" style="color: #d18f93;">Design Your Wig</a>
+        
+        <a href="index.html" onclick="showComingSoon(event)">Bundles</a>
+        <a href="index.html#shop-section">Best Sellers</a>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>tell us the hair you want</h1>
+    </header>
+
+    <!-- Main Design Content -->
+    <div class="design-page-wrapper">
+        
+        <!-- Form Container (Left Side) -->
+        <div class="design-form-container">
+            <h2>Your Dream Wig Details</h2>
+            
+            <form class="design-form" action="https://formspree.io/f/xwllwnqz" method="POST">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>WhatsApp Number</label>
+                        <input type="tel" name="whatsapp" placeholder="e.g. 074 025 5859" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Budget (Optional)</label>
+                        <input type="text" name="budget" placeholder="e.g. R 2,500 - R 3,000">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Desired Texture</label>
+                        <select name="texture" required>
+                            <option value="" disabled selected>Select texture...</option>
+                            <option value="Straight">Straight</option>
+                            <option value="Curly">Curly</option>
+                            <option value="Wavy">Wavy</option>
+                            <option value="Deep Wave">Deep Wave</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Desired Length</label>
+                        <select name="length" required>
+                            <option value="" disabled selected>Select length...</option>
+                            <option value="14 inches">14 inches</option>
+                            <option value="16 inches">16 inches</option>
+                            <option value="18 inches">18 inches</option>
+                            <option value="20 inches">20 inches</option>
+                            <option value="22 inches">22 inches</option>
+                            <option value="24 inches+">24 inches+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Desired Color</label>
+                    <input type="text" name="color" placeholder="e.g. Natural Black, Meroon, Honey Blonde, Custom Mix..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Details & Custom Requests</label>
+                    <textarea name="message" rows="6" placeholder="Tell us about the lace type (HD Lace, Transparent), cap size, density (150%, 180%, 200%), or any specific styling you want..." required></textarea>
+                </div>
+
+                <button type="submit" class="design-submit-btn">Submit Design Request</button>
+            </form>
+        </div>
+
+        <!-- Contact Info (Right Side) -->
+        <div class="design-contact-info">
+            <h3>Prefer to chat?</h3>
+            
+
+            <a href="https://wa.me/27740255859?text=Hi%20Hair%20by%20Andz!%20I%20would%20like%20to%20inquire%20about%20designing%20a%20custom%20wig." target="_blank" class="contact-method">
+                <i class="fab fa-whatsapp"></i>
+                <div>
+                    <span>Send us a message</span>
+                    <strong>074 025 5859</strong>
+                </div>
+            </a>
+
+            <a href="https://www.tiktok.com/@hairby_andz?_r=1&_t=ZS-9AzT24f9npl" target="_blank" class="contact-method">
+                <i class="fab fa-tiktok"></i>
+                <div>
+                    <span>DM us on TikTok</span>
+                    <strong>@hairby_andz</strong>
+                </div>
+            </a>
+            
+            <a href="mailto:andilemabuza03@gmail.com" class="contact-method">
+                <i class="far fa-envelope"></i>
+                <div>
+                    <span>Email us</span>
+                    <strong>andilemabuza03@gmail.com</strong>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/27740255859" target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i><span class="wa-badge"></span>
+    </a>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header"><h2>Shopping Bag</h2><button class="close-cart" onclick="toggleCart()">&times;</button></div>
+        <div class="cart-items-container" id="cartItemsContainer"><p style="text-align:center; color:#999; margin-top:50px;">Your bag is empty.</p></div>
+        <div class="cart-footer">
+            <div class="subtotal-row"><span>Subtotal</span><span id="cartSubtotal">R 0.00</span></div>
+            <button onclick="checkoutWhatsApp()" class="whatsapp-checkout-btn">Checkout via WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="comingSoonModal">
+        <div class="modal-box" style="position: relative;">
+            <button class="close-modal" onclick="closeModals()">&times;</button>
+            <h2>Coming Soon</h2>
+            <p>Our exclusive bundles collection is currently being curated. Stay tuned for the drop!</p>
+            <button onclick="closeModals()">Got It</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        function handleSearch(event) { if (event.key === 'Enter') { executeSearch(); } }
+        function executeSearch() {
+            const query = document.getElementById('searchInput').value;
+            if (query.trim() !== "") { window.location.href = `index.html?search=${encodeURIComponent(query)}#shop-section`; }
+        }
+        function showComingSoon(e) { e.preventDefault(); document.getElementById('comingSoonModal').classList.add('active'); }
+        function closeModals() { document.getElementById('comingSoonModal').classList.remove('active'); }
+    </script>
+</body>
+</html>

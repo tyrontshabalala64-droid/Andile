@@ -1,0 +1,307 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair by Andz | Premium Hair</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="https://www.tiktok.com/@hairby_andz?_r=1&_t=ZS-9AzT24f9npl" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <a href="#home" class="logo-text">Hair by Andz</a>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Find a product..." onkeypress="handleSearch(event)">
+            <button onclick="executeSearch()"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-icons">
+            <a href="#"><i class="far fa-user"></i></a>
+            <button onclick="toggleCart()">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-bar">
+        <a href="#home">Home</a> 
+        <a href="#shop-section" onclick="resetShopTitle()">Shop Wigs</a>
+        
+        <div class="dropdown">
+            <a>By Style</a>
+            <div class="dropdown-content">
+                <a href="#shop-section" onclick="filterStyle('curly')">Curly</a>
+                <a href="#shop-section" onclick="filterStyle('straight')">Straight</a>
+            </div>
+        </div>
+
+        <a href="design.html">Design Your Wig</a>
+        
+        <a href="#" onclick="showComingSoon(event)">Bundles</a>
+        <a href="#shop-section" onclick="filterBestSellers()">Best Sellers</a>
+    </nav>
+
+    <!-- HERO SLIDER -->
+    <section class="hero-slider" id="home">
+        
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793524436/curly_black_1_fd7e2a.jpg" alt="Hair 1">
+            <div class="slide-content">
+                <p>Your style. Your way.</p>
+                <h1>DESIGN YOUR DREAM WIG</h1>
+                <p>Delivered in Just 7 Days</p>
+                <br>
+                <a href="#shop-section" class="btn-shop-now">Shop Now</a>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793523876/copy_of_normal_blend_1.jpg" alt="Hair 2">
+            <div class="slide-content">
+                <p>Premium Quality</p>
+                <h1>FLAWLESS STRAIGHT</h1>
+                <p>100% Virgin Human Hair</p>
+                <br>
+                <a href="#shop-section" class="btn-shop-now">Shop Now</a>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793527349/curly_redish_1_292a2f.jpg" alt="Hair 3">
+            <div class="slide-content">
+                <p>Bold & Beautiful</p>
+                <h1>SIGNATURE MERON</h1>
+                <p>Stand out from the crowd.</p>
+                <br>
+                <a href="#shop-section" class="btn-shop-now">Shop Now</a>
+            </div>
+        </div>
+
+        <!-- Slide 4: TikTok -->
+        <div class="slide" style="background-color: #111;">
+            <div class="slide-content">
+                <i class="fab fa-tiktok" style="font-size: 5rem; margin-bottom: 20px; display: block; color: #fff;"></i>
+                <h1 style="font-size: 4rem; letter-spacing: 2px;">FOLLOW US ON TIKTOK</h1>
+                <p style="margin-top: 15px; font-size: 1.2rem; color: #eee;">Exclusive Drops & Behind The Scenes</p>
+                <br>
+                <a href="https://www.tiktok.com/@hairby_andz?_r=1&_t=ZS-9AzT24f9npl" target="_blank" class="btn-shop-now" style="background-color: #fff; color: #111; border-color: #fff;">@hairby_andz</a>
+            </div>
+        </div>
+
+        <!-- ARROWS REMOVED HERE -->
+
+        <!-- Dots -->
+        <div class="slider-dots">
+            <div class="dot active" onclick="currentSlide(0)"></div>
+            <div class="dot" onclick="currentSlide(1)"></div>
+            <div class="dot" onclick="currentSlide(2)"></div>
+            <div class="dot" onclick="currentSlide(3)"></div>
+        </div>
+    </section>
+
+    <!-- SHOP SECTION -->
+    <div id="shop-section">
+        <header class="page-header">
+            <h1 id="pageTitle">The Collection</h1>
+            <p id="pageSubtitle">Discover flawless textures, meticulously crafted for your everyday luxury.</p>
+        </header>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Product 1 -->
+            <div class="product-card" data-name="meroon curly hair" data-style="curly" data-bestseller="true">
+                <div class="image-wrapper">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="slider-container" onscroll="updateSwipeDots(this)">
+                        <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793527341/curly_redish_3_292a2f.jpg" alt="Meroon Hair">
+                        <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793527349/curly_redish_1_292a2f.jpg" alt="Meroon Hair">
+                        <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793527346/curly_redish_2_292a2f.jpg" alt="Meroon Hair">
+                    </div>
+                    <div class="swipe-dots">
+                        <div class="swipe-dot active"></div>
+                        <div class="swipe-dot"></div>
+                        <div class="swipe-dot"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Meroon Curly Hair</h3>
+                    <div class="price">R 800.00</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Meroon Curly Hair', 800)"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-name="black curly hair" data-style="curly" data-bestseller="true">
+                <div class="image-wrapper">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="slider-container" onscroll="updateSwipeDots(this)">
+                        <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793524436/curly_black_1_fd7e2a.jpg" alt="Black Curly Hair">
+                        <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793524580/copy_of_curly_black_3_fd7e2a.jpg" alt="Black Curly Hair">
+                        <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793524432/curly_Black_2_fd7e2a.jpg" alt="Black Curly Hair">
+                    </div>
+                    <div class="swipe-dots">
+                        <div class="swipe-dot active"></div>
+                        <div class="swipe-dot"></div>
+                        <div class="swipe-dot"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Black Curly Hair</h3>
+                    <div class="price">R 800.00</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Black Curly Hair', 800)"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-name="straight black hair" data-style="straight" data-bestseller="false">
+                <div class="image-wrapper">
+                    <div class="product-badge">New Arrival</div>
+                    <div class="slider-container" onscroll="updateSwipeDots(this)">
+                        <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793523850/copy_of_normal_blend_2.jpg" alt="Straight Black Hair">
+                        <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793523876/copy_of_normal_blend_1.jpg" alt="Straight Black Hair">
+                        <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793522676/normal_blend_1.jpg" alt="Straight Black Hair">
+                    </div>
+                    <div class="swipe-dots">
+                        <div class="swipe-dot active"></div>
+                        <div class="swipe-dot"></div>
+                        <div class="swipe-dot"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Straight Black Hair</h3>
+                    <div class="price">R 750.00</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Straight Black Hair', 750)"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/27740255859" target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i><span class="wa-badge"></span>
+    </a>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header"><h2>Shopping Bag</h2><button class="close-cart" onclick="toggleCart()">&times;</button></div>
+        <div class="cart-items-container" id="cartItemsContainer"><p style="text-align:center; color:#999; margin-top:50px;">Your bag is empty.</p></div>
+        <div class="cart-footer">
+            <div class="subtotal-row"><span>Subtotal</span><span id="cartSubtotal">R 0.00</span></div>
+            <button onclick="checkoutWhatsApp()" class="whatsapp-checkout-btn">Checkout via WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- Coming Soon Modal -->
+    <div class="modal-overlay" id="comingSoonModal">
+        <div class="modal-box" style="position: relative;">
+            <button class="close-modal" onclick="closeModals()">&times;</button>
+            <h2>Coming Soon</h2>
+            <p>Our exclusive bundles collection is currently being curated. Stay tuned for the drop!</p>
+            <button onclick="closeModals()">Got It</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        // --- HERO SLIDER SCRIPT ---
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval;
+        
+        function showSlide(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            slideIndex = (n + slides.length) % slides.length;
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+        function startAutoSlide() { slideInterval = setInterval(() => { showSlide(slideIndex + 1); }, 5000); }
+        startAutoSlide();
+
+        // Make the small dots clickable to change slides
+        function currentSlide(n) { 
+            clearInterval(slideInterval); 
+            showSlide(n); 
+            startAutoSlide(); 
+        }
+
+        // --- PRODUCT IMAGE SWIPE DOTS SCRIPT ---
+        function updateSwipeDots(container) {
+            const scrollLeft = container.scrollLeft;
+            const width = container.clientWidth;
+            const activeIndex = Math.round(scrollLeft / width);
+            
+            const dotsContainer = container.nextElementSibling;
+            const dotElements = dotsContainer.querySelectorAll('.swipe-dot');
+            
+            dotElements.forEach((dot, index) => {
+                if(index === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // --- SEARCH SCRIPT ---
+        function handleSearch(event) { if (event.key === 'Enter') { executeSearch(); } }
+        function executeSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            document.getElementById('pageTitle').innerText = `Search Results`;
+            document.getElementById('pageSubtitle').innerText = `Showing results for "${query}"`;
+            
+            const products = document.querySelectorAll('.product-card');
+            let found = false;
+            products.forEach(product => {
+                const name = product.getAttribute('data-name');
+                if (name.includes(query)) { product.style.display = 'flex'; found = true; } 
+                else { product.style.display = 'none'; }
+            });
+            
+            if(!found) alert("No products found for that search.");
+            document.getElementById('shop-section').scrollIntoView();
+        }
+
+        // --- FILTER SCRIPT ---
+        function resetShopTitle() {
+            document.getElementById('pageTitle').innerText = "The Collection";
+            document.getElementById('pageSubtitle').innerText = "Discover flawless textures, meticulously crafted for your everyday luxury.";
+            document.querySelectorAll('.product-card').forEach(p => p.style.display = 'flex');
+        }
+
+        function filterBestSellers() {
+            document.getElementById('pageTitle').innerText = "Best Sellers";
+            document.getElementById('pageSubtitle').innerText = "Our most loved and highly requested pieces.";
+            document.querySelectorAll('.product-card').forEach(p => {
+                if(p.getAttribute('data-bestseller') === 'true') { p.style.display = 'flex'; } 
+                else { p.style.display = 'none'; }
+            });
+        }
+
+        function filterStyle(style) {
+            document.getElementById('pageTitle').innerText = `${style.charAt(0).toUpperCase() + style.slice(1)} Collection`;
+            document.getElementById('pageSubtitle').innerText = `Explore our premium ${style} textures.`;
+            document.querySelectorAll('.product-card').forEach(p => {
+                if(p.getAttribute('data-style') === style) { p.style.display = 'flex'; } 
+                else { p.style.display = 'none'; }
+            });
+        }
+
+        // --- MODAL SCRIPT ---
+        function showComingSoon(e) { e.preventDefault(); document.getElementById('comingSoonModal').classList.add('active'); }
+        function closeModals() { document.getElementById('comingSoonModal').classList.remove('active'); }
+    </script>
+</body>
+</html>

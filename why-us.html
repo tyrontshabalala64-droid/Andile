@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair by Andz | Why Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="https://www.tiktok.com/@hairby_andz?_r=1&_t=ZS-9AzT24f9npl" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <header class="main-header">
+        <a href="index.html" class="logo-text">Hair by Andz</a>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Find a product..." onkeypress="handleSearch(event)">
+            <button onclick="executeSearch()"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-icons">
+            <a href="#"><i class="far fa-user"></i></a>
+            <button onclick="toggleCart()">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <a href="shop.html">Shop Wigs</a>
+        <div class="dropdown">
+            <a>By Style <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="shop.html?style=curly">Curly</a>
+                <a href="shop.html?style=straight">Straight</a>
+            </div>
+        </div>
+        <a href="design.html">Design Your Wig</a>
+        <a href="#" onclick="showComingSoon(event)">Bundles</a>
+        <a href="shop.html?filter=bestsellers">Best Sellers</a>
+        <a href="why-us.html">Why Us</a>
+    </nav>
+
+    <header class="page-header">
+        <h1>Our Story</h1>
+        <p>The vision behind the luxury.</p>
+    </header>
+
+    <section class="why-us-container">
+        <!-- Your Founder Photo -->
+        <div class="founder-photo">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793630507/copy_of_whatsapp_image_2026-11-02_at_160244.jpg" alt="Andile Mabuza - Founder">
+        </div>
+        
+        <!-- The Story -->
+        <div class="why-us-text">
+            <h2>Meet Andile Mabuza</h2>
+            <p>Welcome to Hair by Andz. We believe that your hair is your crown, and it deserves to be treated as such. Founded with a passion for flawless blends and premium quality, we source only the finest virgin hair extensions.</p>
+            <p>I started this brand because I understand that finding the perfect texture is a personal journey. Whether you are looking for the bouncy volume of our deep curls, the sleek elegance of straight black, or a bold statement with our signature meroon color, our collection is curated to empower your everyday look.</p>
+            <p>Every bundle is meticulously inspected to ensure minimal shedding, maximum longevity, and a natural blend. We are dedicated to providing you with an effortless, luxury experience from the moment you browse to the moment you install.</p>
+            <p><strong>Delivered to your door in just 7 days.</strong></p>
+            <div class="founder-signature">Andile Mabuza</div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/27740255859" target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i><span class="wa-badge"></span>
+    </a>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header"><h2>Shopping Bag</h2><button class="close-cart" onclick="toggleCart()">&times;</button></div>
+        <div class="cart-items-container" id="cartItemsContainer"></div>
+        <div class="cart-footer">
+            <div class="subtotal-row"><span>Subtotal</span><span id="cartSubtotal">R 0.00</span></div>
+            <button onclick="checkoutWhatsApp()" class="whatsapp-checkout-btn">Checkout via WhatsApp</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="comingSoonModal">
+        <div class="modal-box">
+            <h2>Coming Soon</h2>
+            <p>Our exclusive bundles collection is currently being curated. Stay tuned for the drop!</p>
+            <button onclick="closeModal()">Got It</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        function handleSearch(event) { if (event.key === 'Enter') { executeSearch(); } }
+        function executeSearch() {
+            const query = document.getElementById('searchInput').value;
+            if (query.trim() !== "") { window.location.href = `shop.html?search=${encodeURIComponent(query)}`; }
+        }
+        function showComingSoon(e) { e.preventDefault(); document.getElementById('comingSoonModal').classList.add('active'); }
+        function closeModal() { document.getElementById('comingSoonModal').classList.remove('active'); }
+    </script>
+</body>
+</html>

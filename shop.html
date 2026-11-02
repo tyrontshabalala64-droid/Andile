@@ -1,0 +1,203 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair by Andz | Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="https://www.tiktok.com/@hairby_andz?_r=1&_t=ZS-9AzT24f9npl" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <header class="main-header">
+        <a href="index.html" class="logo-text">Hair by Andz</a>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Find a product..." onkeypress="handleSearch(event)">
+            <button onclick="executeSearch()"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-icons">
+            <a href="#"><i class="far fa-user"></i></a>
+            <button onclick="toggleCart()">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <a href="shop.html">Shop Wigs</a>
+        <div class="dropdown">
+            <a>By Style <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="shop.html?style=curly">Curly</a>
+                <a href="shop.html?style=straight">Straight</a>
+            </div>
+        </div>
+        <a href="design.html">Design Your Wig</a>
+        <a href="#" onclick="showComingSoon(event)">Bundles</a>
+        <a href="shop.html?filter=bestsellers">Best Sellers</a>
+        <a href="why-us.html">Why Us</a>
+    </nav>
+
+    <header class="page-header">
+        <h1 id="pageTitle">The Collection</h1>
+         
+    </header>
+
+    <div class="product-grid" id="productGrid">
+
+        <!-- Product 1: Meroon Curly (Best Seller) -->
+        <div class="product-card" data-name="meroon curly hair" data-style="curly" data-bestseller="true">
+            <div class="image-wrapper">
+                <div class="product-badge">Best Seller</div>
+                <div class="slider-container">
+                    <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793527341/curly_redish_3_292a2f.jpg" alt="Meroon Hair">
+                    <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793527349/curly_redish_1_292a2f.jpg" alt="Meroon Hair">
+                    <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793527346/curly_redish_2_292a2f.jpg" alt="Meroon Hair">
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>Meroon Curly Hair</h3>
+                <div class="price">R 2,500.00</div>
+                <button class="add-to-cart-btn" onclick="addToCart('Meroon Curly Hair', 2500)"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 2: Black Curly (Best Seller) -->
+        <div class="product-card" data-name="black curly hair" data-style="curly" data-bestseller="true">
+            <div class="image-wrapper">
+                <div class="product-badge">Best Seller</div>
+                <div class="slider-container">
+                    <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793524436/curly_black_1_fd7e2a.jpg" alt="Black Curly Hair">
+                    <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793524580/copy_of_curly_black_3_fd7e2a.jpg" alt="Black Curly Hair">
+                    <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793524432/curly_Black_2_fd7e2a.jpg" alt="Black Curly Hair">
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>Black Curly Hair</h3>
+                <div class="price">R 2,200.00</div>
+                <button class="add-to-cart-btn" onclick="addToCart('Black Curly Hair', 2200)"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 3: Straight Black (Not Best Seller) -->
+        <div class="product-card" data-name="straight black hair" data-style="straight" data-bestseller="false">
+            <div class="image-wrapper">
+                <div class="product-badge">New Arrival</div>
+                <div class="slider-container">
+                    <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793523850/copy_of_normal_blend_2.jpg" alt="Straight Black Hair">
+                    <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793523876/copy_of_normal_blend_1.jpg" alt="Straight Black Hair">
+                    <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1793522676/normal_blend_1.jpg" alt="Straight Black Hair">
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>Straight Black Hair</h3>
+                <div class="price">R 2,000.00</div>
+                <button class="add-to-cart-btn" onclick="addToCart('Straight Black Hair', 2000)"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="https://wa.me/27740255859" target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i><span class="wa-badge"></span>
+    </a>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header"><h2>Shopping Bag</h2><button class="close-cart" onclick="toggleCart()">&times;</button></div>
+        <div class="cart-items-container" id="cartItemsContainer"></div>
+        <div class="cart-footer">
+            <div class="subtotal-row"><span>Subtotal</span><span id="cartSubtotal">R 0.00</span></div>
+            <button onclick="checkoutWhatsApp()" class="whatsapp-checkout-btn">Checkout via WhatsApp</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="comingSoonModal">
+        <div class="modal-box">
+            <h2>Coming Soon</h2>
+            <p>Our exclusive bundles collection is currently being curated. Stay tuned for the drop!</p>
+            <button onclick="closeModal()">Got It</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        // Search Script
+        function handleSearch(event) { if (event.key === 'Enter') { executeSearch(); } }
+        function executeSearch() {
+            const query = document.getElementById('searchInput').value;
+            if (query.trim() !== "") { window.location.href = `shop.html?search=${encodeURIComponent(query)}`; }
+            else { window.location.href = `shop.html`; }
+        }
+
+        // Modal Script
+        function showComingSoon(e) {
+            e.preventDefault();
+            document.getElementById('comingSoonModal').classList.add('active');
+        }
+        function closeModal() { document.getElementById('comingSoonModal').classList.remove('active'); }
+
+        // --- FILTER LOGIC (Best Sellers, Styles, Search) ---
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('search');
+            const filterType = urlParams.get('filter');
+            const styleType = urlParams.get('style');
+            
+            const titleEl = document.getElementById('pageTitle');
+            const subtitleEl = document.getElementById('pageSubtitle');
+            const products = document.querySelectorAll('.product-card');
+            let foundAny = false;
+
+            products.forEach(product => {
+                let show = true;
+                const name = product.getAttribute('data-name');
+                const style = product.getAttribute('data-style');
+                const isBestSeller = product.getAttribute('data-bestseller') === 'true';
+
+                // 1. Check Search Query
+                if (searchQuery && !name.includes(searchQuery.toLowerCase())) {
+                    show = false;
+                }
+                
+                // 2. Check Best Seller Filter
+                if (filterType === 'bestsellers') {
+                    titleEl.innerText = "Best Sellers";
+                    subtitleEl.innerText = "Our most loved and highly requested pieces.";
+                    if (!isBestSeller) show = false;
+                }
+                
+                // 3. Check Style Filter
+                if (styleType) {
+                    titleEl.innerText = `${styleType.charAt(0).toUpperCase() + styleType.slice(1)} Collection`;
+                    subtitleEl.innerText = `Explore our premium ${styleType} textures.`;
+                    if (style !== styleType.toLowerCase()) show = false;
+                }
+
+                // 4. Update Search Title
+                if (searchQuery) {
+                    titleEl.innerText = `Search Results`;
+                    subtitleEl.innerText = `Showing results for "${searchQuery}"`;
+                }
+
+                // Apply display
+                if (show) {
+                    product.style.display = 'flex';
+                    foundAny = true;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+
+            if (!foundAny) {
+                document.getElementById('productGrid').innerHTML = `<p style="grid-column: 1/-1; text-align: center; font-size: 1.2rem; color: #666; padding: 40px;">No products found. Please try a different filter or search term.</p>`;
+            }
+        };
+    </script>
+</body>
+</html>
